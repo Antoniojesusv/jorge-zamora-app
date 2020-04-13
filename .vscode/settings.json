@@ -1,0 +1,24 @@
+{
+  "eslint.enable": true,
+  "eslint.run": "onSave",
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "comments": true
+  },
+  "workbench.editor.highlightModifiedTabs": true,
+  "php.suggest.basic": false,
+  "php.executablePath": "/usr/bin/php7.4",
+  "phpcs.enable": true,
+  "phpcs.standard": "PSR2",
+  "phpcs.executablePath": "/home/antonio/.config/composer/vendor/bin/phpcs",
+  "php-cs-fixer.executablePath": "php-cs-fixer",
+  "php-cs-fixer.exclude": [
+    "**/vendor/**/*.php",
+    "**/config/**/*.php",
+    "**/public/**/*.php",
+    "**/bin/**/*.php"
+  ],
+  "php-cs-fixer.onsave": true,
+  "php-cs-fixer.rules": "@PSR2"
+}

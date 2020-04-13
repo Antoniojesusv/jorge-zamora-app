@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-login-container
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/app
+      - ./docker/nginx/login.conf:/etc/nginx/conf.d/site.conf
+    networks:
+      app-login:
+        aliases:
+          - nginx
+
+  php:
+    build: ./docker/php-fpm
+    container_name: phpfpm-login-container
+    volumes:
+      - ./app:/app
+    networks:
+      app-login:
+        aliases:
+          - php
+
+  db:
+    image: mysql:5.7
+    ports:
+      - "3307:3306"
+    # env_file: ./mysql.env
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./docker/mysql/:/docker-entrypoint-initdb.d
+    networks:
+      app-login:
+        aliases:
+          - mysql
+
+networks:
+  app-login:
+    driver: bridge

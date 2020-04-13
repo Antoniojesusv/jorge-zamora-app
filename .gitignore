@@ -1,0 +1,5 @@
+*odt
+data/
+vendor/
+node_modules/
+logs/
