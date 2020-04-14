@@ -2,41 +2,75 @@ version: "3.7"
 
 services:
   nginx:
-    image: nginx:latest
-    container_name: nginx-login-container
+    build:
+      context: ./docker/nginx
+      args:
+        - WEB_USER=${WEB_USER}
+    container_name: ${NGINX_CONTAINER_NAME}
     ports:
-      - "8080:80"
+      - "${NGINX_EXPOSED_PORT}:80"
     volumes:
-      - ./app:/app
-      - ./docker/nginx/login.conf:/etc/nginx/conf.d/site.conf
+      - ./app:${NGINX_APP_DIR}
+      # - ./docker/nginx/nginx.conf:${NGINX_CONF_DIRECTORY}
     networks:
-      app-login:
-        aliases:
-          - nginx
+      app_net:
+        ipv4_address: ${NGINX_IP}
 
   php:
-    build: ./docker/php-fpm
-    container_name: phpfpm-login-container
+    build:
+      context: ./docker/php-fpm
+      args:
+        - WEB_USER=${WEB_USER}
+        - WEB_GROUP=${WEB_GROUP}
+        - PHP_ROOT_DIR=${PHP_ROOT_DIR}
+    container_name: ${PHP_CONTAINER_NAME}
+    working_dir: ${PHP_APP_DIR}
     volumes:
-      - ./app:/app
+      - ./app:${PHP_APP_DIR}
+      - ./logs/php:${PHP_ROOT_DIR}/logs
+      - ./logs/php:/tmp/xdebug_log
+    depends_on:
+      - nginx
+      - db
+    environment:
+      - PHP_ROOT_DIR=${PHP_ROOT_DIR}
+      - NGINX_IP=${NGINX_IP}
+      - NGINX_EXPOSED_PORT=${NGINX_EXPOSED_PORT}
+      - WEB_USER=${WEB_USER}
+      - WEB_GROUP=${WEB_GROUP}
+      - MYSQL_IP=${MYSQL_IP}
+      - MYSQL_ROOT_USER=${MYSQL_ROOT_USER}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     networks:
-      app-login:
-        aliases:
-          - php
+      app_net:
+        ipv4_address: ${PHP_IP}
 
   db:
-    image: mysql:5.7
+    build:
+      context: ./docker/mysql
+      args:
+        - MYSQL_CONTAINER_USER=${MYSQL_CONTAINER_USER}
+        - MYSQL_CONTAINER_GROUP=${MYSQL_CONTAINER_GROUP}
+    container_name: ${MYSQL_CONTAINER_NAME}
+    command: --default-authentication-plugin=mysql_native_password --sql-mode=""
     ports:
-      - "3307:3306"
-    # env_file: ./mysql.env
+      - "${MYSQL_EXPOSED_PORT}:3306"
+    environment:
+      - MYSQL_CONTAINER_USER=${MYSQL_CONTAINER_USER}
+      - MYSQL_CONTAINER_GROUP=${MYSQL_CONTAINER_GROUP}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - ./data:/var/lib/mysql
-      - ./docker/mysql/:/docker-entrypoint-initdb.d
+      - ./logs/mysql:${MYSQL_LOG_DIR}
+      - ./docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     networks:
-      app-login:
-        aliases:
-          - mysql
+      app_net:
+        ipv4_address: ${MYSQL_IP}
 
 networks:
-  app-login:
+  app_net:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${NETWORK_SUBNET}
