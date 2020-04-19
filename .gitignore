@@ -1,5 +1,6 @@
-*odt
+docs/
 data/
 vendor/
 node_modules/
 logs/
+.env
