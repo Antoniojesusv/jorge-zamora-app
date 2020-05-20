@@ -6,3 +6,4 @@ node_modules/
 logs/
 .env
 package-lock.json
+composer.lock
