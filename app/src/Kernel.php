@@ -2,17 +2,20 @@
 
 namespace App;
 
-use App\Services\Components\Routing\Request;
-use App\Services\Components\Routing\Router;
-use App\Services\Components\Routing\HttpService;
+use App\Config\EnvironmentVariablesConfig;
+use DI\ContainerBuilder;
 
 class Kernel
 {
     public function __construct()
     {
-        $this->request = new Request();
-        $this->http = new HttpService();
-        $this->router = new Router($this->request, $this->http);
+        $environment = new EnvironmentVariablesConfig();
+        $appDir = $environment->getVariable('PHP_APP_DIR');
+        $pathContainerDepencies = 'src/Config/Dependencies/ContainerDependenciesConfig.php';
+        $containerBuilder = new ContainerBuilder();
+        $containerBuilder->addDefinitions($appDir . DIRECTORY_SEPARATOR . $pathContainerDepencies);
+        $container = $containerBuilder->build();
+        $this->router = $container->get('Router');
         $this->router->invokeController();
     }
 }
