@@ -35,6 +35,7 @@ services:
       - nginx
       - db
     environment:
+      - PHP_APP_DIR=${PHP_APP_DIR}
       - PHP_ROOT_DIR=${PHP_ROOT_DIR}
       - NGINX_IP=${NGINX_IP}
       - NGINX_FRONTEND_EXPOSED_PORT=${NGINX_FRONTEND_EXPOSED_PORT}
