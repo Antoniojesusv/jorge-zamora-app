@@ -1,0 +1,53 @@
+{
+  "name": "jorge-zamora",
+  "version": "1.0.0",
+  "description": "This is xiwily4 app",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antoniojesusv/jorge-zamora-app.git"
+  },
+  "author": "Antonio Jesús Vázquez Muñoz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Antoniojesusv/jorge-zamora-app/issues"
+  },
+  "homepage": "https://github.com/Antoniojesusv/jorge-zamora-app#readme",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "browserify": "^16.5.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulplog": "^1.0.0",
+    "inversify": "^5.0.1",
+    "lodash.assign": "^4.2.0",
+    "reflect-metadata": "^0.1.13",
+    "uniq": "^1.0.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "watchify": "^3.11.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babelify": "^10.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "gulp": "^4.0.2",
+    "prettier": "^2.0.5"
+  }
+}
