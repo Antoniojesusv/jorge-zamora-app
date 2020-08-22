@@ -10,7 +10,7 @@ class Rectangle {
     console.log(this.Position.sayHello2());
     console.log(this.height);
     console.log(this.weight);
-    this.say = 'Yo digo hola con import';
+    this.say = 'Yo digo hola con import gg';
     return this.say;
   }
 }
