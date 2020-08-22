@@ -29,6 +29,9 @@
     "gulplog": "^1.0.0",
     "inversify": "^5.0.1",
     "lodash.assign": "^4.2.0",
+    "moment": "^2.27.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "reflect-metadata": "^0.1.13",
     "uniq": "^1.0.1",
     "vinyl-buffer": "^1.0.1",
@@ -38,6 +41,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.10.4",
     "babelify": "^10.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",

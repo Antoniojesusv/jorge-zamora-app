@@ -1,6 +1,7 @@
 {
   "eslint.enable": true,
   "eslint.run": "onSave",
+  "eslint.alwaysShowStatus": true,
   "eslint.validate": ["javascript", "javascriptreact"],
   "editor.formatOnSave": true,
   "editor.quickSuggestions": {
@@ -20,5 +21,10 @@
     "**/bin/**/*.php"
   ],
   "php-cs-fixer.onsave": true,
-  "php-cs-fixer.rules": "@PSR2"
+  "php-cs-fixer.rules": "@PSR2",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "auto-rename-tag.activationOnLanguage": ["html", "xml"],
+  "editor.renameOnType": true
 }
