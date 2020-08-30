@@ -4,7 +4,7 @@ class Position {
   }
 
   sayHello2() {
-    this.say = 'I am the position dependencie';
+    this.say = 'I am the position dependencies';
     return this.say;
   }
 }

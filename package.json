@@ -23,6 +23,7 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "browserify": "^16.5.1",
+    "gulp-autoprefixer": "^7.0.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
@@ -30,8 +31,10 @@
     "inversify": "^5.0.1",
     "lodash.assign": "^4.2.0",
     "moment": "^2.27.0",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "reflect-metadata": "^0.1.13",
     "uniq": "^1.0.1",
     "vinyl-buffer": "^1.0.1",
@@ -43,6 +46,7 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.10.4",
     "babelify": "^10.0.0",
+    "browser-sync": "^2.26.12",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.11.0",
@@ -52,6 +56,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
     "prettier": "^2.0.5"
   }
 }
