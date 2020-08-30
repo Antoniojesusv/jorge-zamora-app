@@ -1,0 +1,14 @@
+/* Test */
+
+.red {
+  color: red;
+}
+
+.yellow {
+  color: #000;
+}
+
+.display-flex {
+  display: flex;
+  justify-content: center;
+}
